@@ -166,37 +166,37 @@
 
             <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
                   >Все курсы</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
                   >Сайты</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
                   >Языки</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
                   >Игры</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
                   >Дизайн</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
                   >Прочее</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
                   >Кибербезопасность</a
                 >
               </li>
@@ -353,9 +353,9 @@
       </div>
     </section>
     {% block footer %}{% endblock footer %}
-    <script src="deps/js/jquery/jquery-3.7.0.min.js"></script>
-    <script src="deps/js/jquery-events.js"></script>
-    <script src="deps/js/jquery-ajax.js"></script>
-    <script src="deps/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="{% static "deps/js/jquery/jquery-3.7.0.min.js" %}"></script>
+    <script src="{% static "deps/js/jquery-events.js" %}"></script>
+    <script src="{% static "deps/js/jquery-ajax.js" %}"></script>
+    <script src="{% static "deps/js/bootstrap/bootstrap.bundle.min.js" %}"></script>
   </body>
 </html>

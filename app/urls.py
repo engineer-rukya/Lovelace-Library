@@ -1,10 +1,8 @@
-from django.urls import path
-
-from main import views
-
-app_name = 'main'
+from django.contrib import admin
+from django.urls import include, path
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('about/', views.about, name='about'),
+    path('admin/', admin.site.urls),
+    path('', include('main.urls', namespace='main')),
+    path('catalog/', include('goods.urls', namespace='catalog'))
 ]
