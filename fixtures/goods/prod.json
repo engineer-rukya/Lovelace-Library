@@ -152,5 +152,19 @@
       "quantity": 10,
       "category": 8
     }
+  },
+    {
+    "model": "goods.products",
+    "pk": 12,
+    "fields": {
+      "name": "Кибербезопасность с нуля",
+      "slug": "kiberbezopasnost-s-nulya",
+      "description": "Курс по изучению Кибербезопасности с нуля на практике. В курсе вы узнаете про наиболее распространенные ошибки и научитесь строить защищенные приложения. Уроки CyberSecurity для начинающих.",
+      "image": "",
+      "price": "50,00",
+      "discount": "0.00",
+      "quantity": 9,
+      "category": 2
+    }
   }
 ]
