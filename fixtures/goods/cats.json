@@ -39,20 +39,20 @@
       "slug": "kiberbezopasnost"
     }
   },
-  {
+    {
     "model": "goods.categories",
     "pk": 7,
     "fields": {
-      "name": "Прочее",
-      "slug": "prochee"
+      "name": "Сайты",
+      "slug": "sajty"
     }
   },
   {
     "model": "goods.categories",
     "pk": 8,
     "fields": {
-      "name": "Сайты",
-      "slug": "sajty"
+      "name": "Прочее",
+      "slug": "prochee"
     }
   }
 ]

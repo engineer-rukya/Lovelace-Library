@@ -24,7 +24,7 @@
       "price": "93.00",
       "discount": "0.00",
       "quantity": 7,
-      "category": 7
+      "category": 8
     }
   },
   {
@@ -52,7 +52,7 @@
       "price": "430.00",
       "discount": "0.00",
       "quantity": 8,
-      "category": 7
+      "category": 8
     }
   },
   {
@@ -136,7 +136,7 @@
       "price": "15.00",
       "discount": "0.00",
       "quantity": 14,
-      "category": 8
+      "category": 7
     }
   },
   {
@@ -150,7 +150,7 @@
       "price": "25.00",
       "discount": "0.00",
       "quantity": 10,
-      "category": 8
+      "category": 7
     }
   },
     {
