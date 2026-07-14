@@ -14,8 +14,6 @@ from pathlib import Path
 import os
 from django.http import HttpResponseNotFound
 
-print("ENV TEST:", os.getenv("DB_PASSWORD"))
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -48,6 +46,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "main",
     "goods",
+    "users",
 ]
 
 MIDDLEWARE = [
@@ -66,7 +65,7 @@ ROOT_URLCONF = "app.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        'DIRS': [BASE_DIR / 'templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
