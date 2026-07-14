@@ -2,581 +2,126 @@
 {% load static %}
 
 {% block content %}
- <div class="row">
-              <!-- Форма фильтров -->
-              <div class="dropdown mb-2">
-                <button
-                  class="btn btn-secondary dropdown-toggle btn-dark"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Фильтры
-                </button>
+<div class="row">
+  <!-- Форма фильтров -->
+  <div class="dropdown mb-2">
+    <button
+      class="btn btn-secondary dropdown-toggle btn-dark"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Фильтры
+    </button>
 
-                <form
-                  action=""
-                  method="get"
-                  class="dropdown-menu bg-dark"
-                  data-bs-theme="dark"
-                >
-                  <div class="form-check text-white mx-3">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      name="on_sale"
-                      id="flexCheckDefault"
-                      value="on"
-                    />
-                    <input type="hidden" name="q" value="request.GET.q" />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Товары по акции
-                    </label>
-                  </div>
-                  <p class="text-white mx-3 mt-3">Сортировать:</p>
-                  <div class="form-check text-white mx-3">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="order_by"
-                      id="flexRadioDefault1"
-                      value="default"
-                      checked
-                    />
-                    <label class="form-check-label" for="flexRadioDefault1">
-                      По умолчанию
-                    </label>
-                  </div>
-                  <div class="form-check text-white mx-3">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="order_by"
-                      id="flexRadioDefault2"
-                      value="price"
-                    />
-                    <label class="form-check-label" for="flexRadioDefault2">
-                      От дешевых к дорогим
-                    </label>
-                  </div>
-                  <div class="form-check text-white mx-3">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="order_by"
-                      id="flexRadioDefault3"
-                      value="-price"
-                    />
-                    <label class="form-check-label" for="flexRadioDefault3">
-                      От дорогих к дешевым
-                    </label>
-                  </div>
-                  <button type="submit" class="btn btn-primary mx-3 mt-3">
-                    Применить
-                  </button>
-                </form>
-              </div>
-              <!-- Карта товара -->
-              <div class="col-lg-4 col-md-6 p-4">
-                <div class="card border-primary rounded custom-shadow">
-                  <img
-                    src="../deps/images/goods/rust.png"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
+    <form
+      action=""
+      method="get"
+      class="dropdown-menu bg-dark"
+      data-bs-theme="dark"
+    >
+      <div class="form-check text-white mx-3">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="on_sale"
+          id="flexCheckDefault"
+          value="on"
+        />
+        <input type="hidden" name="q" value="request.GET.q" />
+        <label class="form-check-label" for="flexCheckDefault">
+          Товары по акции
+        </label>
+      </div>
+      <p class="text-white mx-3 mt-3">Сортировать:</p>
+      <div class="form-check text-white mx-3">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="order_by"
+          id="flexRadioDefault1"
+          value="default"
+          checked
+        />
+        <label class="form-check-label" for="flexRadioDefault1">
+          По умолчанию
+        </label>
+      </div>
+      <div class="form-check text-white mx-3">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="order_by"
+          id="flexRadioDefault2"
+          value="price"
+        />
+        <label class="form-check-label" for="flexRadioDefault2">
+          От дешевых к дорогим
+        </label>
+      </div>
+      <div class="form-check text-white mx-3">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="order_by"
+          id="flexRadioDefault3"
+          value="-price"
+        />
+        <label class="form-check-label" for="flexRadioDefault3">
+          От дорогих к дешевым
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary mx-3 mt-3">Применить</button>
+    </form>
+  </div>
+
+
+  {% for product in goods %}
+        <!-- Карта товара -->
+        <div class="col-lg-4 col-md-6 p-4">
+            <div class="card border-primary rounded custom-shadow">
+                <img src="{% static product.image %}" class="card-img-top" alt="...">
+                <div class="card-body">
                     <a href="../goods/product.html">
-                      <p class="card-title">
-                        Изучение языка Rust для начинающих
-                      </p>
+                        <p class="card-title">{{ product.name }}</p>
                     </a>
-                    <p class="card-text text-truncate">
-                      Курс по изучению языка Rust для начинающих. В ходе курса
-                      мы с нуля изучим язык Rust, научимся писать проекты на его
-                      основе, а также изучим все основные концепции данного
-                      языка программирования.
-                    </p>
+                    <p class="card-text text-truncate">{{ product.description }}</p>
                     <p class="product_id">id: 02265</p>
                     <div class="d-flex justify-content-between">
-                      <p><s>100</s> $</p>
-                      <p><strong>90.00 $</strong></p>
-                      <span class="badge bg-warning text-dark"
-                        >Скидка 10.00 %</span
-                      >
-                      <!-- <p><strong>100.00 $</strong></p> -->
-                      <a href="#" class="btn add-to-cart">
-                        <img
-                          class="mx-1"
-                          src="../deps/icons/cart-plus.svg"
-                          alt="Catalog Icon"
-                          width="32"
-                          height="32"
-                        />
-                      </a>
+                        {% comment %} <p><s>100</s> $</p>
+                        <p><strong>90.00 $</strong></p>
+                        <span class="badge bg-warning text-dark">Скидка 10.00 %</span> {% endcomment %}
+                        <p><strong>{{ product.price }} $</strong></p>
+                        <a href="#" class="btn add-to-cart">
+                            <img class="mx-1" src="{% static "deps/icons/cart-plus.svg" %}" alt="Catalog Icon"
+                                width="32" height="32">
+                        </a>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <!-- Карта товара -->
-              <div class="col-lg-4 col-md-6 p-4">
-                <div class="card border-primary rounded custom-shadow">
-                  <img
-                    src="../deps/images/goods/cplus.png"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <a href="#">
-                      <p class="card-title">
-                        Уроки C++ WinForms / Создание программ на Windows
-                      </p>
-                    </a>
-                    <p class="card-text text-truncate">
-                      Представляем курс по изучению платформы WinForms и
-                      построению приложений на Windows на основе языка C++. В
-                      ходе курса вы научитесь с нуля строить программы с
-                      графическим интерфейсом, дизайном и функциями.
-                    </p>
-                    <p class="product_id">id: 02265</p>
-                    <div class="d-flex justify-content-between">
-                      <p><s>100</s> $</p>
-                      <p><strong>90.00 $</strong></p>
-                      <span class="badge bg-warning text-dark"
-                        >Скидка 10.00 %</span
-                      >
-                      <!-- <p><strong>100.00 $</strong></p> -->
-                      <a href="#" class="btn add-to-cart">
-                        <img
-                          class="mx-1"
-                          src="../deps/icons/cart-plus.svg"
-                          alt="Catalog Icon"
-                          width="32"
-                          height="32"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Карта товара -->
-              <div class="col-lg-4 col-md-6 p-4">
-                <div class="card border-primary rounded custom-shadow">
-                  <img
-                    src="../deps/images/goods/golang.png"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <a href="#">
-                      <p class="card-title">Изучение Golang</p>
-                    </a>
-                    <p class="card-text text-truncate">
-                      Представляем вам курс по изучению языка Golang. В ходе
-                      уроков языка Go вы научитесь писать код на Golang и
-                      создадите на его основе полноценный небольшой веб сайт.
-                      Курс небольшой и рассчитан на новичков в этой сфере.
-                    </p>
-                    <p class="product_id">id: 02265</p>
-                    <div class="d-flex justify-content-between">
-                      <p><s>100</s> $</p>
-                      <p><strong>90.00 $</strong></p>
-                      <span class="badge bg-warning text-dark"
-                        >Скидка 10.00 %</span
-                      >
-                      <!-- <p><strong>100.00 $</strong></p> -->
-                      <a href="#" class="btn">
-                        <img
-                          class="mx-1"
-                          src="../deps/icons/cart-plus.svg"
-                          alt="Catalog Icon"
-                          width="32"
-                          height="32"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Карта товара -->
-              <div class="col-lg-4 col-md-6 p-4">
-                <div class="card border-primary rounded custom-shadow">
-                  <img
-                    src="../deps/images/goods/csharp.png"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <a href="#">
-                      <p class="card-title">Изучение C# WPF</p>
-                    </a>
-                    <p class="card-text text-truncate">
-                      Разработка на C# включает в себя множество аспектов. За
-                      курс мы будем изучать платформу WPF, что позволяет вести
-                      разработку полноценных программ под ПК. Мы научимся
-                      работать с WPF, языком XAML и по итогу создадим полный
-                      проект с базой данных.
-                    </p>
-                    <p class="product_id">id: 02265</p>
-                    <div class="d-flex justify-content-between">
-                      <p><s>100</s> $</p>
-                      <p><strong>90.00 $</strong></p>
-                      <span class="badge bg-warning text-dark"
-                        >Скидка 10.00 %</span
-                      >
-                      <!-- <p><strong>100.00 $</strong></p> -->
-                      <a href="#" class="btn">
-                        <img
-                          class="mx-1"
-                          src="../deps/icons/cart-plus.svg"
-                          alt="Catalog Icon"
-                          width="32"
-                          height="32"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Карта товара -->
-              <div class="col-lg-4 col-md-6 p-4">
-                <div class="card border-primary rounded custom-shadow">
-                  <img
-                    src="../deps/images/goods/ci.png"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <a href="#">
-                      <p class="card-title">Язык Си для начинающих</p>
-                    </a>
-                    <p class="card-text text-truncate">
-                      Представляем курс по изучению языка программирования Си.
-                      Си является одним из самых популярных языков в
-                      программировании и за его изучение обычно берутся ещё в
-                      школе или университете.
-                    </p>
-                    <p class="product_id">id: 02265</p>
-                    <div class="d-flex justify-content-between">
-                      <p><s>100</s> $</p>
-                      <p><strong>90.00 $</strong></p>
-                      <span class="badge bg-warning text-dark"
-                        >Скидка 10.00 %</span
-                      >
-                      <!-- <p><strong>100.00 $</strong></p> -->
-                      <a href="#" class="btn">
-                        <img
-                          class="mx-1"
-                          src="../deps/icons/cart-plus.svg"
-                          alt="Catalog Icon"
-                          width="32"
-                          height="32"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Карта товара -->
-              <div class="col-lg-4 col-md-6 p-4">
-                <div class="card border-primary rounded custom-shadow">
-                  <img
-                    src="../deps/images/goods/kotlin.png"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <a href="#">
-                      <p class="card-title">Изучение Kotlin</p>
-                    </a>
-                    <p class="card-text text-truncate">
-                      В ходе курса вы изучите язык программирования Котлин
-                      (Kotlin) с нуля, а также научитесь использовать его для
-                      построения Андроид программ. Вы обучитесь всем ключевым
-                      моментам работы с Kotlin и сможете выполнить легкий
-                      переход от Java к Kotlin.
-                    </p>
-                    <p class="product_id">id: 02265</p>
-                    <div class="d-flex justify-content-between">
-                      <p><s>100</s> $</p>
-                      <p><strong>90.00 $</strong></p>
-                      <span class="badge bg-warning text-dark"
-                        >Скидка 10.00 %</span
-                      >
-                      <!-- <p><strong>100.00 $</strong></p> -->
-                      <a href="#" class="btn">
-                        <img
-                          class="mx-1"
-                          src="../deps/icons/cart-plus.svg"
-                          alt="Catalog Icon"
-                          width="32"
-                          height="32"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Карта товара -->
-              <div class="col-lg-4 col-md-6 p-4">
-                <div class="card border-primary rounded custom-shadow">
-                  <img
-                    src="../deps/images/goods/csharpnet.png"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <a href="#">
-                      <p class="card-title">
-                        Программа на C# .NET Windows Forms
-                      </p>
-                    </a>
-                    <p class="card-text text-truncate">
-                      В ходе курса вы научитесь работать с C# .NET Windows
-                      Forms, а также создадите приложение с дизайном и
-                      подключением к базе данных. Вы изучите как подключать
-                      программы к базе данных, поработайте с MySQL, а также
-                      создадите красивый дизайн для приложения.
-                    </p>
-                    <p class="product_id">id: 02265</p>
-                    <div class="d-flex justify-content-between">
-                      <p><s>100</s> $</p>
-                      <p><strong>90.00 $</strong></p>
-                      <span class="badge bg-warning text-dark"
-                        >Скидка 10.00 %</span
-                      >
-                      <!-- <p><strong>100.00 $</strong></p> -->
-                      <a href="#" class="btn">
-                        <img
-                          class="mx-1"
-                          src="../deps/icons/cart-plus.svg"
-                          alt="Catalog Icon"
-                          width="32"
-                          height="32"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Карта товара -->
-              <div class="col-lg-4 col-md-6 p-4">
-                <div class="card border-primary rounded custom-shadow">
-                  <img
-                    src="../deps/images/goods/sql.png"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <a href="#">
-                      <p class="card-title">Уроки SQL для начинающих</p>
-                    </a>
-                    <p class="card-text text-truncate">
-                      Язык SQL используется в любой программе и на любом веб
-                      сайте, где идет работа с базами данных. В ходе курса вы
-                      изучите язык SQL, а также научитесь работать с базами
-                      данных на примере MySQL.
-                    </p>
-                    <p class="product_id">id: 02265</p>
-                    <div class="d-flex justify-content-between">
-                      <p><s>100</s> $</p>
-                      <p><strong>90.00 $</strong></p>
-                      <span class="badge bg-warning text-dark"
-                        >Скидка 10.00 %</span
-                      >
-                      <!-- <p><strong>100.00 $</strong></p> -->
-                      <a href="#" class="btn">
-                        <img
-                          class="mx-1"
-                          src="../deps/icons/cart-plus.svg"
-                          alt="Catalog Icon"
-                          width="32"
-                          height="32"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Карта товара -->
-              <div class="col-lg-4 col-md-6 p-4">
-                <div class="card border-primary rounded custom-shadow">
-                  <img
-                    src="../deps/images/goods/figma.png"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <a href="#">
-                      <p class="card-title">Изучение Figma с нуля</p>
-                    </a>
-                    <p class="card-text text-truncate">
-                      Представляем вам уроки по изучению программы Figma (Фигма)
-                      с нуля для начинающих. В ходе курса вы научитесь создавать
-                      UI, UX дизайн для веб и мобильных проектов. К концу курса
-                      у вас будут твердые знания в разработке дизайна при помощи
-                      программы Figma.
-                    </p>
-                    <p class="product_id">id: 02265</p>
-                    <div class="d-flex justify-content-between">
-                      <p><s>100</s> $</p>
-                      <p><strong>90.00 $</strong></p>
-                      <span class="badge bg-warning text-dark"
-                        >Скидка 10.00 %</span
-                      >
-                      <!-- <p><strong>100.00 $</strong></p> -->
-                      <a href="#" class="btn">
-                        <img
-                          class="mx-1"
-                          src="../deps/icons/cart-plus.svg"
-                          alt="Catalog Icon"
-                          width="32"
-                          height="32"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Карта товара -->
-              <div class="col-lg-4 col-md-6 p-4">
-                <div class="card border-primary rounded custom-shadow">
-                  <img
-                    src="../deps/images/goods/javaprofi.png"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <a href="#">
-                      <p class="card-title">Уроки Java для профессионалов</p>
-                    </a>
-                    <p class="card-text text-truncate">
-                      Приступаем к большому курсу по изучению языка Java на
-                      профессиональном уровне. За курс вы познакомитесь с
-                      коллекциями, потоками, ознакомитесь с библиотекой JavaFx,
-                      а также с подключением базы данных через JDBC.
-                    </p>
-                    <p class="product_id">id: 02265</p>
-                    <div class="d-flex justify-content-between">
-                      <p><s>100</s> $</p>
-                      <p><strong>90.00 $</strong></p>
-                      <span class="badge bg-warning text-dark"
-                        >Скидка 10.00 %</span
-                      >
-                      <!-- <p><strong>100.00 $</strong></p> -->
-                      <a href="#" class="btn">
-                        <img
-                          class="mx-1"
-                          src="../deps/icons/cart-plus.svg"
-                          alt="Catalog Icon"
-                          width="32"
-                          height="32"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Карта товара -->
-              <div class="col-lg-4 col-md-6 p-4">
-                <div class="card border-primary rounded custom-shadow">
-                  <img
-                    src="../deps/images/goods/python.png"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <a href="#">
-                      <p class="card-title">Уроки Python с нуля</p>
-                    </a>
-                    <p class="card-text text-truncate">
-                      Представляем вам уроки программирования Python для
-                      начинающих. Обучение с нуля для чайников. Большой видео
-                      курс по изучению языка Питон.
-                    </p>
-                    <p class="product_id">id: 02265</p>
-                    <div class="d-flex justify-content-between">
-                      <p><s>100</s> $</p>
-                      <p><strong>90.00 $</strong></p>
-                      <span class="badge bg-warning text-dark"
-                        >Скидка 10.00 %</span
-                      >
-                      <!-- <p><strong>100.00 $</strong></p> -->
-                      <a href="#" class="btn">
-                        <img
-                          class="mx-1"
-                          src="../deps/icons/cart-plus.svg"
-                          alt="Catalog Icon"
-                          width="32"
-                          height="32"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Карта товара -->
-              <div class="col-lg-4 col-md-6 p-4">
-                <div class="card border-primary rounded custom-shadow">
-                  <img
-                    src="../deps/images/goods/javascript.png"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <a href="#">
-                      <p class="card-title">Уроки JavaScript для начинающих</p>
-                    </a>
-                    <p class="card-text text-truncate">
-                      Современный мир веба очень сложно представить без JS.
-                      JavaScript – это душа веб-сайта, так как все интерактивные
-                      действия выполняет JS. JavaScript является встроенным
-                      компонентом в веб-программировании, поэтому его не нужно
-                      устанавливать или настраивать.
-                    </p>
-                    <p class="product_id">id: 02265</p>
-                    <div class="d-flex justify-content-between">
-                      <p><s>100</s> $</p>
-                      <p><strong>90.00 $</strong></p>
-                      <span class="badge bg-warning text-dark"
-                        >Скидка 10.00 %</span
-                      >
-                      <!-- <p><strong>100.00 $</strong></p> -->
-                      <a href="#" class="btn">
-                        <img
-                          class="mx-1"
-                          src="../deps/icons/cart-plus.svg"
-                          alt="Catalog Icon"
-                          width="32"
-                          height="32"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-            <!-- Пагинация -->
-            <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-center my-4">
-                <div class="custom-shadow d-flex">
-                  <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                  </li>
-                </div>
-              </ul>
-            </nav>
-{% endblock %}
+        </div>
+    {% endfor %}
 
-{% block footer %}
-<footer class="py-4 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; L Library 2026</p>
+<!-- Пагинация -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center my-4">
+    <div class="custom-shadow d-flex">
+      <li class="page-item disabled">
+        <a class="page-link">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
     </div>
+  </ul>
+</nav>
+{% endblock %} {% block footer %}
+<footer class="py-4 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; L Library 2026</p>
+  </div>
 </footer>
 {% endblock %}

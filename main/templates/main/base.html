@@ -114,7 +114,7 @@
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item text-white" href="#"
+                    <a class="dropdown-item text-white" href={% url "admin:index" %}
                       >Админ панель</a
                     >
                   </li>
@@ -165,41 +165,13 @@
             </button>
 
             <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
-              <li>
-                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
-                  >Все курсы</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
-                  >Сайты</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
-                  >Языки</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
-                  >Игры</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
-                  >Дизайн</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
-                  >Прочее</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="{% url "catalog:index" %}"
-                  >Кибербезопасность</a
-                >
-              </li>
+                {% for category in categories %}
+                            <li>
+                                <a class="dropdown-item text-white" href="{% url "catalog:index" %}">
+                                    {{category.name}}
+                                </a>
+                            </li>
+                 {% endfor %}
             </ul>
           </div>
           <!-- Значек корзины, вызывает модальное окно -->
